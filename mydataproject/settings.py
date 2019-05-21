@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'TestModel.apps.TestmodelConfig',
+    'sqlData.apps.SqldataConfig'
 ]
 
 MIDDLEWARE = [
@@ -79,10 +80,10 @@ WSGI_APPLICATION = 'mydataproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',  # 或者使用 mysql.connector.django
-        'NAME': 'mytest',
+        'NAME': 'bhg',
         'USER': 'root',
-        'PASSWORD': 'jiangweidong',
-        'HOST':'47.106.91.135',
+        'PASSWORD': 'root',
+        'HOST':'192.168.1.250',
         'PORT':'3306',
     }
 }

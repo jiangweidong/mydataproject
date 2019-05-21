@@ -9,5 +9,9 @@ urlpatterns=[
     url("tests/",include('TestModel.urls')),
     url('admin/', admin.site.urls),
       ##
-    url('polls/',include('TestModel.urls'))
+    url('polls/',include('TestModel.urls')),
+
+
+    ##通过250sqlserver 提取数据
+    url('sqlserver/',include('sqlData.urls'))
 ]
