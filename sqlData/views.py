@@ -10,6 +10,7 @@ import matplotlib.pyplot as plt
 import io
 import base64
 import json
+import time
 plt.style.use("fivethirtyeight")
 sns.set_style({'font.sans-serif': ['simhei', 'Arial']})
 # 检查Python版本
@@ -50,8 +51,8 @@ def getsqlbasedata(request):
 def getfemaleandmale():
   fig = plt.figure()
   data1=executeSql("select * from VisitorRecord")
-  maleDataFram = data1.query("GenderMale=='male'", inplace=False)
-  femaleDataFrame = data1.query("GenderMale=='female'", inplace=False)
+  maleDataFram = data1.query("GenderMale=='男'", inplace=False)
+  femaleDataFrame = data1.query("GenderMale=='女'", inplace=False)
   maleCount = len(maleDataFram)
   femaleCount = len(femaleDataFrame)
   allcount = len(data1)
@@ -68,7 +69,7 @@ def getDevicehot():
     dfallusecount=executeSql("select count(*) as count,IP from VisitorRecord GROUP by IP")
     dftodayusecount=executeSql("""
      select count(*) as count,table1.ip from (select convert(varchar(100),BeginTime,23) as BeginTime,ip from VisitorRecord
-     where convert(varchar(100),BeginTime,23)='2019-04-28') as table1 group by table1.ip
+     where convert(varchar(100),BeginTime,23)="""+time.strftime('%Y-%m-%d',time.localtime(time.time()))+""") as table1 group by table1.ip
      """)
     x1=dfallusecount['IP']
     value1=dfallusecount['count']

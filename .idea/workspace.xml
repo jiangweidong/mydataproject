@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ffc23e23-960a-4578-8d15-7a0f8165fb5f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sqlData/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/sqlData/views.py" afterDir="false" />
     </list>
@@ -43,8 +42,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sqlData/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="371">
-              <caret line="89" column="49" lean-forward="true" selection-start-line="89" selection-start-column="49" selection-end-line="89" selection-end-column="49" />
+            <state relative-caret-position="50">
+              <caret line="53" column="47" selection-start-line="53" selection-start-column="47" selection-end-line="53" selection-end-column="47" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
               </folding>
@@ -91,8 +90,8 @@
         <option value="$PROJECT_DIR$/sqlData/urls.py" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/templates/chart.html" />
-        <option value="$PROJECT_DIR$/sqlData/views.py" />
         <option value="$PROJECT_DIR$/mydataproject/settings.py" />
+        <option value="$PROJECT_DIR$/sqlData/views.py" />
       </list>
     </option>
   </component>
@@ -221,15 +220,16 @@
       <workItem from="1558406180061" duration="2338000" />
       <workItem from="1558421531724" duration="6534000" />
       <workItem from="1558488294416" duration="9004000" />
-      <workItem from="1558578229436" duration="9371000" />
+      <workItem from="1558578229436" duration="10011000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42287000" />
+    <option name="totallyTimeSpent" value="42927000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="87" y="23" width="1350" height="837" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20107034" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -457,8 +457,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sqlData/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="371">
-          <caret line="89" column="49" lean-forward="true" selection-start-line="89" selection-start-column="49" selection-end-line="89" selection-end-column="49" />
+        <state relative-caret-position="50">
+          <caret line="53" column="47" selection-start-line="53" selection-start-column="47" selection-end-line="53" selection-end-column="47" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
