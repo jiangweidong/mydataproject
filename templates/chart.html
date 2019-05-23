@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<body>
+<div id="contexthtml" CLASS="contexthtml">
+   <p >我们从上线至今，已经检测到{{ peoplecount }}人使用了我们的机器，其中男性{{ malecount }}人，
+   女性{{ femalecount  }}人，平均停留时间为{{ avgtime }} 秒
+   </p>
+    </div>
+   <img id="devicehot" src="{{ devicehot }}"/>
+   <img id="femaleandmale" src="{{ femaleandmale }}"/>
+
+<script>
+window.onload=function (){
+    setInterval(function () {
+   $.ajax({
+    type: 'GET',
+    url: "/sqlserver/getsqlbasedata/",
+    data: {},
+    dataType: 'json',
+    success: function(data) {
+        var devicehot = document.getElementById("devicehot");
+        var femaleandmale = document.getElementById("femaleandmale");
+       devicehot.src=data.devicehot;
+        femaleandmale.src=data.femaleandmale
+        var htmls="<p>我们从上线至今，已经检测到"+data.peoplecount+"人使用了我们的机器，其中男性"+data.malecount+"人，\n" +
+            "   女性"+data.femalecount+"人，平均停留时间为"+data.avgtime+" 秒</p>"
+        $(".contexthtml").html(htmls)
+    },
+    error: function(xhr, type) {
+    }
+        })
+   },1500)
+    }
+</script>
+</body>
+
+</html>
