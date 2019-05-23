@@ -12,10 +12,10 @@ import base64
 import json
 plt.style.use("fivethirtyeight")
 sns.set_style({'font.sans-serif': ['simhei', 'Arial']})
-# ¼ì²éPython°æ±¾
+# æ£€æŸ¥Pythonç‰ˆæœ¬
 from sys import version_info
 if version_info.major != 3:
-    raise Exception('ÇëÊ¹ÓÃPython 3 À´Íê³É´ËÏîÄ¿')
+    raise Exception('è¯·ä½¿ç”¨Python 3 æ¥å®Œæˆæ­¤é¡¹ç›®')
 # Create your views here.
 conn = pymssql.connect(host='192.168.1.250',
                            user='sa',
@@ -23,7 +23,7 @@ conn = pymssql.connect(host='192.168.1.250',
                            database='GZK11QianMuDB',
                            charset='utf8')
 plt.style.use("ggplot")
-##¼àÊÓÊı×é³¤¶È
+##ç›‘è§†æ•°ç»„é•¿åº¦
 def getdatacharts(request):
   #plt=getfemaleandmale()
   context={}
@@ -46,7 +46,7 @@ def getsqlbasedata(request):
     resp["femalecount"] = femalecount
     resp["avgtime"] = avgtime
     return HttpResponse(json.dumps(resp), content_type="application/json")
-#»ñÈ¡ÄĞÅ®ÈËÊı±ÈÀı
+#è·å–ç”·å¥³äººæ•°æ¯”ä¾‹
 def getfemaleandmale():
   fig = plt.figure()
   data1=executeSql("select * from VisitorRecord")
@@ -56,13 +56,13 @@ def getfemaleandmale():
   femaleCount = len(femaleDataFrame)
   allcount = len(data1)
   print(maleCount,femaleCount,allcount)
-  labels = ["ÄĞĞÔ", "Å®ĞÔ", "Î´Öª"]
+  labels = ["ç”·æ€§", "å¥³æ€§", "æœªçŸ¥"]
   X = [maleCount, femaleCount, allcount - (maleCount + femaleCount)]
   plt.pie(x=X, labels=labels, autopct='%.0f%%')
-  plt.title("ÄĞÅ®ÈËÊı±È")
+  plt.title("ç”·å¥³äººæ•°æ¯”")
   avgtime=sum(data1['StopTime'])/len(data1)
   return plt,len(data1),len(maleDataFram),len(femaleDataFrame),avgtime
-#»ñÈ¡»úÆ÷Ê¹ÓÃÈÈ¶È
+#è·å–æœºå™¨ä½¿ç”¨çƒ­åº¦
 def getDevicehot():
     fig = plt.figure()
     dfallusecount=executeSql("select count(*) as count,IP from VisitorRecord GROUP by IP")
@@ -82,20 +82,20 @@ def getDevicehot():
     opacity = 0.4
     rects=ax.bar(index, value1, bar_width,
                 alpha=opacity, color='b',
-                label='×Ü¼Æ·ÃÎÊ')
+                label='æ€»è®¡è®¿é—®')
     rects2 = ax.bar(index+bar_width, value2, bar_width,
-                   alpha=opacity, color='r',label='µ±Ìì·ÃÎÊ')
+                   alpha=opacity, color='r',label='å½“å¤©è®¿é—®')
     ax.legend()
     ax.set_xticks(index + bar_width / 2)
     ax.set_xticklabels(('A', 'B', 'C', 'D', 'E'))
     fig.tight_layout()
     return plt
-#´«Èësql»ñÈ¡dataframe
+#ä¼ å…¥sqlè·å–dataframe
 def executeSql(sql):
     df0 = pd.read_sql(sql, conn)
     df = pd.DataFrame(df0)
     return df
-#½«Éú³ÉµÄÍ¼±í×ª»»³Ébase64
+#å°†ç”Ÿæˆçš„å›¾è¡¨è½¬æ¢æˆbase64
 def imagetobase64(plt):
     buffer = io.BytesIO()
     plt.savefig(buffer)
