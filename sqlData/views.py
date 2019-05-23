@@ -67,10 +67,8 @@ def getfemaleandmale():
 def getDevicehot():
     fig = plt.figure()
     dfallusecount=executeSql("select count(*) as count,IP from VisitorRecord GROUP by IP")
-    dftodayusecount=executeSql("""
-     select count(*) as count,table1.ip from (select convert(varchar(100),BeginTime,23) as BeginTime,ip from VisitorRecord
-     where convert(varchar(100),BeginTime,23)="""+time.strftime('%Y-%m-%d',time.localtime(time.time()))+""") as table1 group by table1.ip
-     """)
+    dftodayusecount=executeSql("select count(*) as count,table1.ip from (select convert(varchar(100),BeginTime,23) as BeginTime,ip "
+                               "from VisitorRecord where convert(varchar(100),BeginTime,23)='"+time.strftime('%Y-%m-%d',time.localtime(time.time()))+"') as table1 group by table1.ip")
     x1=dfallusecount['IP']
     value1=dfallusecount['count']
     x2 = dftodayusecount['ip']
