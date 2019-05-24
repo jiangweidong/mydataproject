@@ -23,7 +23,6 @@ conn = pymssql.connect(host='192.168.1.250',
                            password='1qaz2wsx???',
                            database='GZK11QianMuDB',
                            charset='utf8')
-plt.style.use("ggplot")
 ##监视数组长度
 def getdatacharts(request):
   #plt=getfemaleandmale()
@@ -73,8 +72,8 @@ def getDevicehot():
     value1=dfallusecount['count']
     x2 = dftodayusecount['ip']
     value2 = dftodayusecount['count']
-    if(len(value2)!=len(value1)):
-        value2=value2.append(Series([0,0,0]))
+    if(len(dfallusecount)!=len(dftodayusecount)):
+        value2=value2.append(pd.Series(np.arange(len(dfallusecount)-len(dftodayusecount))))
     fig, ax = plt.subplots()
     index=np.arange(len(dfallusecount))
     bar_width=0.35
@@ -83,7 +82,7 @@ def getDevicehot():
                 alpha=opacity, color='b',
                 label='总计访问')
     rects2 = ax.bar(index+bar_width, value2, bar_width,
-                   alpha=opacity, color='r',label='当天访问')
+                  alpha=opacity, color='r',label='当天访问')
     ax.legend()
     ax.set_xticks(index + bar_width / 2)
     ax.set_xticklabels(('A', 'B', 'C', 'D', 'E'))
