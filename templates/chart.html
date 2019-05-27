@@ -14,16 +14,21 @@
     </div>
    <img id="devicehot" src="{{ devicehot }}"/>
    <img id="femaleandmale" src="{{ femaleandmale }}"/>
-
+   <input id="peoplecount" value="{{peoplecount}}" hidden/>
 <script>
 window.onload=function (){
     setInterval(function () {
    $.ajax({
     type: 'GET',
     url: "/sqlserver/getsqlbasedata/",
-    data: {},
+    data: {
+        peoplecount:$("#peoplecount").val()
+    },
     dataType: 'json',
-    success: function(data) {
+    success: function(data){
+        if(data.data=="nochange"){
+            return
+        }
         var devicehot = document.getElementById("devicehot");
         var femaleandmale = document.getElementById("femaleandmale");
        devicehot.src=data.devicehot;

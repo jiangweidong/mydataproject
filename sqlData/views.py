@@ -11,28 +11,32 @@ import io
 import base64
 import json
 import time
+from mydataproject import  cache
 plt.style.use("fivethirtyeight")
 sns.set_style({'font.sans-serif': ['simhei', 'Arial']})
 # 检查Python版本
 from sys import version_info
 if version_info.major != 3:
     raise Exception('请使用Python 3 来完成此项目')
-
-##监视数组长度
 def getdatacharts(request):
-  #plt=getfemaleandmale()
   context={}
   context["devicehot"]=imagetobase64(getDevicehot())
   plt,peoplecount,malecount,femalecount,avgtime=getfemaleandmale()
   context["femaleandmale"]=imagetobase64(plt)
   context["malecount"]=malecount
   context["peoplecount"]=peoplecount
+  cache.Savepeoplecont(peoplecount)
   context["femalecount"]=femalecount
   context["avgtime"]=avgtime
   return  render(request,'chart.html',context)
 
 def getsqlbasedata(request):
-    resp={}
+    resp = {}
+    resp["data"]="change"
+    peoplecount=request.GET.get("peoplecount")
+    if(int(getdatalength())==int(peoplecount)):
+         resp["data"]="nochange"
+         return HttpResponse(json.dumps(resp), content_type="application/json")
     resp["devicehot"] = imagetobase64(getDevicehot())
     plt, peoplecount, malecount, femalecount, avgtime = getfemaleandmale()
     resp["femaleandmale"] = imagetobase64(plt)
@@ -40,7 +44,10 @@ def getsqlbasedata(request):
     resp["peoplecount"] = peoplecount
     resp["femalecount"] = femalecount
     resp["avgtime"] = avgtime
+    resp["peoplecount"]=peoplecount
     return HttpResponse(json.dumps(resp), content_type="application/json")
+def getdatalength():
+    return executeSql("select count(*) as count from VisitorRecord")["count"][0]
 #获取男女人数比例
 def getfemaleandmale():
   fig = plt.figure()
@@ -50,7 +57,6 @@ def getfemaleandmale():
   maleCount = len(maleDataFram)
   femaleCount = len(femaleDataFrame)
   allcount = len(data1)
-  print(maleCount,femaleCount,allcount)
   labels = ["男性", "女性", "未知"]
   X = [maleCount, femaleCount, allcount - (maleCount + femaleCount)]
   plt.pie(x=X, labels=labels, autopct='%.0f%%')
