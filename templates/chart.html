@@ -14,7 +14,7 @@
     </div>
    <img id="devicehot" src="{{ devicehot }}"/>
    <img id="femaleandmale" src="{{ femaleandmale }}"/>
-   <input id="peoplecount" value="{{peoplecount}}" hidden/>
+   <input id="peoplecount" value="{{peoplecount}}"/>
 <script>
 window.onload=function (){
     setInterval(function () {
@@ -36,6 +36,7 @@ window.onload=function (){
         var htmls="<p>我们从上线至今，已经检测到"+data.peoplecount+"人使用了我们的机器，其中男性"+data.malecount+"人，\n" +
             "   女性"+data.femalecount+"人，平均停留时间为"+data.avgtime+" 秒</p>"
         $(".contexthtml").html(htmls)
+        $("#peoplecount").val(data.peoplecount)
     },
     error: function(xhr, type) {
     }

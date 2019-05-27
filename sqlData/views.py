@@ -11,7 +11,6 @@ import io
 import base64
 import json
 import time
-from mydataproject import  cache
 plt.style.use("fivethirtyeight")
 sns.set_style({'font.sans-serif': ['simhei', 'Arial']})
 # 检查Python版本
@@ -25,7 +24,6 @@ def getdatacharts(request):
   context["femaleandmale"]=imagetobase64(plt)
   context["malecount"]=malecount
   context["peoplecount"]=peoplecount
-  cache.Savepeoplecont(peoplecount)
   context["femalecount"]=femalecount
   context["avgtime"]=avgtime
   return  render(request,'chart.html',context)
@@ -44,7 +42,6 @@ def getsqlbasedata(request):
     resp["peoplecount"] = peoplecount
     resp["femalecount"] = femalecount
     resp["avgtime"] = avgtime
-    resp["peoplecount"]=peoplecount
     return HttpResponse(json.dumps(resp), content_type="application/json")
 def getdatalength():
     return executeSql("select count(*) as count from VisitorRecord")["count"][0]
