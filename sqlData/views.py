@@ -17,12 +17,7 @@ sns.set_style({'font.sans-serif': ['simhei', 'Arial']})
 from sys import version_info
 if version_info.major != 3:
     raise Exception('请使用Python 3 来完成此项目')
-# Create your views here.
-conn = pymssql.connect(host='192.168.1.250',
-                           user='sa',
-                           password='1qaz2wsx???',
-                           database='GZK11QianMuDB',
-                           charset='utf8')
+
 ##监视数组长度
 def getdatacharts(request):
   #plt=getfemaleandmale()
@@ -90,8 +85,17 @@ def getDevicehot():
     return plt
 #传入sql获取dataframe
 def executeSql(sql):
+    # Create your views here.
+    conn = pymssql.connect(host='192.168.1.250',
+                           user='sa',
+                           password='1qaz2wsx???',
+                           database='GZK11QianMuDB',
+                           charset='utf8')
+
     df0 = pd.read_sql(sql, conn)
+    conn.close()
     df = pd.DataFrame(df0)
+
     return df
 #将生成的图表转换成base64
 def imagetobase64(plt):
