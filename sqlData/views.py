@@ -25,7 +25,7 @@ def getdatacharts(request):
   context["malecount"]=malecount
   context["peoplecount"]=peoplecount
   context["femalecount"]=femalecount
-  context["avgtime"]=avgtime
+  context["avgtime"]=round(avgtime,2)
   return  render(request,'index.html',context)
 
 def getsqlbasedata(request):
@@ -41,7 +41,7 @@ def getsqlbasedata(request):
     resp["malecount"] = malecount
     resp["peoplecount"] = peoplecount
     resp["femalecount"] = femalecount
-    resp["avgtime"] = avgtime
+    resp["avgtime"] = round(avgtime,2)
     return HttpResponse(json.dumps(resp), content_type="application/json")
 def getdatalength():
     return executeSql("select count(*) as count from VisitorRecord")["count"][0]
