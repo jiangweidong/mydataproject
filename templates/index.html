@@ -1,0 +1,185 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>千目信息后台数据中心</title>
+	</head>
+<body>
+	<div class="content">
+		<div class="headBox">
+			<img src="/static/img/head.png" width="269" height="51">
+		</div>
+		<div class="dataBox">
+			<div class="dataTitle">
+				<span class="visitTxt">访问量</span>
+				<span class="colB3">|</span>
+				<span class="colB3">VIEWS</span>
+			</div>
+			<div>
+				<ul class="list-items">
+					<li class="list-item bgMonth">
+						<div class="item-tit">总计访问人数</div>
+                        <div class="number item-num"><b class="pu1">{{ peoplecount }}</b><span class="item-unit">/次</span></div>
+					</li>
+					<li class="list-item bgDay">
+						<div class="item-tit">平均停留时间</div>
+                        <div class="number item-dayNum"><b class="pu2">{{ avgtime }}</b><span class="item-unit">/秒</span></div>
+					</li>
+					<li class="list-item bgWoman">
+						<div class="item-tit">女性访问量总计</div>
+                        <div class="number item-womanNum"><b class="pu3">{{ femalecount  }}</b><span class="item-unit">/次</span></div>
+					</li>
+					<li class="list-item bgMan">
+						<div class="item-tit">男性访问量总计</div>
+                        <div class="number item-manNum"><b class="pu4">{{ malecount }}</b><span class="item-unit">/次</span></div>
+					</li>
+				</ul>
+			</div>
+			<div class="dataTitle">
+				<span class="visitTxt">数据图</span>
+				<span class="colB3">|</span>
+				<span class="colB3">DATA</span>
+			</div>
+			<div class="dataImgBox">
+				<img id="devicehot" src="{{ devicehot }}" width="841" height="522" class="dataImg">
+				<img id="femaleandmale" src="{{ femaleandmale }}" width="841" height="522">
+			       <input id="peoplecount" value="{{peoplecount}}" hidden/>
+
+            </div>
+		</div>
+	</div>
+<script>
+window.onload=function (){
+    setInterval(function () {
+   $.ajax({
+    type: 'GET',
+    url: "/sqlserver/getsqlbasedata/",
+    data: {
+        peoplecount:$("#peoplecount").val()
+    },
+    dataType: 'json',
+    success: function(data){
+        if(data.data=="nochange"){
+            return
+        }
+        var devicehot = document.getElementById("devicehot");
+        var femaleandmale = document.getElementById("femaleandmale");
+       devicehot.src=data.devicehot;
+        femaleandmale.src=data.femaleandmale
+        {#var htmls="<p>我们从上线至今，已经检测到"+data.peoplecount+"人使用了我们的机器，其中男性"+data.malecount+"人，\n" +#}
+        {#    "   女性"+data.femalecount+"人，平均停留时间为"+data.avgtime+" 秒</p>"#}
+        {#$(".contexthtml").html(htmls)#}
+        $(".pu1").html(data.peoplecount);
+        $(".pu2").html(data.avgtime)
+        $(".pu3").html(data.femalecount)
+        $(".pu4").html(data.malecount)
+
+        $("#peoplecount").val(data.peoplecount)
+    },
+    error: function(xhr, type) {
+    }
+        })
+   },5000)
+    }
+</script>
+	<style type="text/css">
+		body {
+			margin: 0px;
+			padding: 0px;
+			width: 1920px;
+			height: 1080px;
+		}
+		.content {
+			width: 1920px;
+			height: 1080px;
+		}
+		.headBox {
+			width: 1816px;
+			background: #FFF;
+			padding: 44px 0px 41px 104px;
+		}
+		.dataBox {
+			width: 100%;
+			height: 946px;
+			background: #f5f6fa;
+		}
+		img {
+			display: block;
+		}
+		.dataTitle {
+			padding-top: 45px;
+			margin-left: 104px;
+		}
+		.visitTxt {
+			color: #333333;
+			font-size: 24px;
+			font-weight: bold;
+		}
+		.colB3 {
+			color: #b3b3b3;
+			font-size: 24px;
+			line-height: 20px;
+			font-weight: bold;
+		}
+		.bgMonth {
+			background: url("/static/img/month.png") no-repeat;
+		}
+		.bgDay {
+			background: url("/static/img/day.png") no-repeat;
+		}
+		.bgWoman {
+			background: url("/static/img/woman.png") no-repeat;
+		}
+		.bgMan {
+			background: url("/static/img/man.png") no-repeat;
+		}
+		.list-items {
+			margin-top: 18px;
+			padding: 0;
+			margin-left: 104px;
+			display: flex;
+		}
+		.list-item {
+			list-style: none;
+			margin-right: 35px;
+			width: 402px;
+			height: 137px;
+			color: #FFF;
+		}
+		.item-tit {
+			font-size: 25px;
+			padding-top: 18px;
+			margin-left: 71px;
+		}
+		.number {
+			margin-left: 39px;
+			font-size: 50px;
+		}
+		.item-num {
+			color: #4579e3;
+		}
+		.item-dayNum {
+			color: #da8e2c;
+		}
+		.item-womanNum {
+			color: #e05345;
+		}
+		.item-manNum {
+			color: #1f96ce;
+		}
+		.item-unit {
+			color: #FFF;
+			font-size: 28px;
+			margin-left: 22px;
+		}
+		.dataImgBox {
+			display: flex;
+			margin-left: 104px;
+			padding-top: 18px;
+		}
+		.dataImg {
+			margin-right: 33px;
+		}
+	</style>
+</body>
+</html>

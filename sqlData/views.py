@@ -26,7 +26,7 @@ def getdatacharts(request):
   context["peoplecount"]=peoplecount
   context["femalecount"]=femalecount
   context["avgtime"]=avgtime
-  return  render(request,'chart.html',context)
+  return  render(request,'index.html',context)
 
 def getsqlbasedata(request):
     resp = {}
