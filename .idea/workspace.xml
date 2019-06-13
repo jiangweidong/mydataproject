@@ -33,7 +33,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/yuanrun/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
+            <state relative-caret-position="277">
               <caret line="98" column="16" lean-forward="true" selection-start-line="98" selection-start-column="16" selection-end-line="98" selection-end-column="16" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
@@ -96,7 +96,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="89" />
     <option name="y" value="29" />
     <option name="width" value="1350" />
@@ -240,16 +240,15 @@
       <workItem from="1559785143647" duration="6000" />
       <workItem from="1559787308257" duration="29000" />
       <workItem from="1559798696255" duration="32000" />
-      <workItem from="1560327151357" duration="8967000" />
+      <workItem from="1560327151357" duration="9255000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70928000" />
+    <option name="totallyTimeSpent" value="71216000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="89" y="29" width="1350" height="837" extended-state="1" />
-    <editor active="true" />
+    <frame x="89" y="29" width="1350" height="837" extended-state="0" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21941896" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -562,7 +561,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/yuanrun/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
+        <state relative-caret-position="277">
           <caret line="98" column="16" lean-forward="true" selection-start-line="98" selection-start-column="16" selection-end-line="98" selection-end-column="16" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
