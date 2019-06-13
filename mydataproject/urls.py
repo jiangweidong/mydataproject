@@ -2,6 +2,7 @@
 from django.conf.urls import url,include
 from . import views,testdb,chart
 from django.contrib import admin
+
 urlpatterns=[
     url("hello/",views.hello),
     url("testdb/",testdb.testdb),
@@ -13,5 +14,7 @@ urlpatterns=[
 
 
     ##通过250sqlserver 提取数据
-    url('sqlserver/',include('sqlData.urls'))
+    url('sqlserver/',include('sqlData.urls')),
+    ##获取远润数据
+    url('yuanrun/',include('yuanrun.urls'))
 ]

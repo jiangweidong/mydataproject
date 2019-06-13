@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'TestModel.apps.TestmodelConfig',
-    'sqlData.apps.SqldataConfig'
+    'sqlData.apps.SqldataConfig',
+    'yuanrun.apps.YuanrunConfig'
 ]
 
 MIDDLEWARE = [

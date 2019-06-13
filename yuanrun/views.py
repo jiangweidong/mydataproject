@@ -17,9 +17,6 @@ sns.set_style({'font.sans-serif': ['simhei', 'Arial']})
 from sys import version_info
 if version_info.major != 3:
     raise Exception('请使用Python 3 来完成此项目')
-
-
-
 def getdatacharts(request):
   context={}
   context["devicehot"]=imagetobase64(getDevicehot())
@@ -92,9 +89,9 @@ def getDevicehot():
 #传入sql获取dataframe
 def executeSql(sql):
     # Create your views here.
-    conn = pymssql.connect(host='192.168.1.250',
+    conn = pymssql.connect(host='117.50.5.57',
                            user='sa',
-                           password='1qaz2wsx???',
+                           password='whir.2015',
                            database='GZK11QianMuDB',
                            charset='utf8')
 
